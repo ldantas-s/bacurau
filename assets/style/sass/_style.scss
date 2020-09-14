@@ -1,0 +1,354 @@
+@import '_variables';
+
+// Mixis
+@mixin setupAfterElement {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+@mixin setupBackground($url, $positionX, $positionY, $attachment, $size) {
+  background: url($url) no-repeat;
+  background-size: $size;
+  background-position: $positionX $positionY;
+  background-attachment: $attachment;
+}
+
+.messageResponsive {
+  width: 100%;
+  height: 100vh;
+  padding: 0 5%;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .messageResponsive__title {
+    font-size: 2rem;
+  }
+  .messageResponsive__text {
+    font-size: 1.5rem;
+    text-align: center;
+    opacity: .8;
+  }
+  .messageResponsive__imageLogo {
+    width: 25%;
+    margin-bottom: 20px;
+    opacity: .2;
+  }
+}
+
+.nav {
+  position: fixed;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  z-index: 100;
+  .nav-menus {
+    list-style: none;
+    transform: scale(.8) translateX(-20px);
+    transition: all 100ms cubic-bezier(0, 0, 0.42, 1.49);
+  }
+  .nav-menus:hover {
+    transform: scale(1) translateX(0);
+    transition: all 100ms cubic-bezier(0, 0, 0.42, 1.49);
+  }
+  .nav-menus__item {
+    text-decoration: none;
+    color: #56d68480;
+  }
+  .nav-menus__item:hover {
+    color: #56d684;
+  }
+}
+.main {
+  width: 100%;
+  height: auto;
+}
+.main-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  padding: 0 11.45%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.main-section--startSection {
+  background: $color-secundary;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  .main-section__title,
+  .main-section__subTitle {
+    color: $color-primary;
+  }
+  .main-section__title {
+    font-size: 2.5rem;
+    text-transform: uppercase;
+  }
+  .main-section__title--biggest { font-size: 2.8rem; }
+}
+.main-section--content {
+  .main-section__title {
+    margin-bottom: 20px;
+  }
+  .main-section__text {
+    width: 400px;
+  }
+}
+.main-section-topics {
+  list-style: none;
+}
+.main-section-topics__topic {
+  margin-bottom: 25px;
+}
+
+// Section Bacurau
+.main-section--bacurauBg::after {
+  @include setupAfterElement;
+  @include setupBackground(
+    '../../images/backgrounds/bg-bacurau.png',
+    40vw, top,
+    fixed,
+    initial
+  );
+  opacity: .6;
+}
+.main-section--content--bacurauBg::after {
+  @include setupAfterElement;
+  @include setupBackground(
+    '../../images/backgrounds/bg-bacurau.png',
+    40vw, top,
+    initial,
+    initial
+  );
+}
+
+// Section Tipograph
+.main-section--TypographyBg::after {
+  @include setupAfterElement;
+  @include setupBackground(
+    '../../images/backgrounds/bg-typography.png',
+    60vw, center,
+    fixed,
+    25%
+  );
+  opacity: .7;
+}
+.main-section--content__imageTypography {
+  width: 50%;
+}
+
+// Section colors
+.main-section--colorsBg {
+  background: url('../../images/backgrounds/bg-colors.png') no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+.main-section--content-colors {
+  overflow: hidden;
+  flex-wrap: nowrap;
+  position: relative;
+
+}
+.main-section--content-colors-infoColors {
+  height: 100vh;
+  padding: 30px 100px 50px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: absolute;
+  right: 277px;
+}
+.main-section--content__imageColors {
+  width: 200%;
+  position: absolute;
+  right: -38vw;
+  margin: auto 0;
+}
+.main-section--content-colors-infoColors__info {
+  position: relative;
+  & > p:first-child {
+    font-size: 1.5rem;
+  }
+  & > p:first-child::after,
+  &:nth-child(1) > p:first-child::after,
+  &:nth-child(3) > p:first-child::after {
+    @include setupAfterElement;
+    top: initial;
+    width: 200%;
+    height: 2px;
+    margin: 5px 0;
+    background: $color-secundary;
+  }
+  &:nth-child(2) > p:first-child::after {
+    width: 120%;
+  }
+  & > p:last-child {
+    margin-top: 10px;
+    font-size: .9rem;
+  }
+}
+
+// Section constructive Diagram
+.main-section--diagramBg::after {
+  @include setupAfterElement;
+  @include setupBackground(
+    '../../images/backgrounds/bg-aurea.png',
+    60vw, center,
+    initial,
+    25%
+  );
+}
+.main-section__imageDiagram {
+  width: 45%;
+}
+
+// Section Logo
+.main-section--logoBg::after {
+  @include setupAfterElement;
+  @include setupBackground(
+    '../../images/backgrounds/bg-logo.png',
+    50vw, center,
+    fixed,
+    40%
+  );
+}
+.main-section--content__imageLogo {
+  width: 50%;
+}
+
+// Section size scales
+.main-section--content-rightSide--scaleSize {
+  .main-section--content-rightSide-blockImage {
+    // border: 1px solid red;
+    width: 290px;
+    display: flex;
+    justify-content: flex-start;
+    & > img {
+      margin: auto;
+    }
+  }
+  .main-section--content-rightSide-blockImage > p::after {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 140px;
+    height: 2px;
+    background: $color-secundary;
+  }
+  .main-section--content-rightSide-blockImage:nth-child(2) > p::after {
+    width: 110px;
+  }
+  .main-section--content-rightSide-blockImage:nth-child(3) > p::after {
+    width: 70px;
+  }
+  .main-section--content-rightSide-blockImage:nth-child(4) > p::after {
+    width: 30px;
+  }
+}
+.main-section--content-rightSide-blockImage__imageLogo42 {
+  width: 42px;
+}
+.main-section--content-rightSide-blockImage__imageLogo2 {
+  width: 42px * 2;
+}
+.main-section--content-rightSide-blockImage__imageLogo4 {
+  width: 42px * 4;
+}
+.main-section--content-rightSide-blockImage__imageLogo6 {
+  width: 42px * 6;
+}
+
+// Section colors scale
+.main-section--content-rightSide-blockImage  {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.main-section--content-rightSide-blockImage__text {
+  margin-right: 20px;
+}
+
+// Section composition
+.main-section--content-compositionsImages {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.main-section--compositionsImages__image {
+  width: 30%;
+}
+.main-section--compositionsImages__image:first-child {
+  width: 55%;
+}
+.main-section--composition {
+  justify-content: center;
+}
+
+// Section of the restrict use
+.main-section--content-restrictImages {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+.main-section--content-restrictImages__image {
+  width: 20%;
+  margin: 10px;
+}
+
+// Section application marga
+.main-section--applicationBg {
+  @include setupBackground(
+    '../../images/backgrounds/bg-applications.png',
+    initial, initial,
+    fixed,
+    100%
+  );
+}
+.main-section__imageMockup {
+  width: 50%;
+}
+
+// Section Ldantas
+.main-section--ldantas {
+  position: relative;
+  justify-content: center;
+  .main-section__title {
+    font-size: 2.2rem;
+    margin-bottom: 0;
+  }
+}
+.main-section--ldantas::after {
+  @include setupAfterElement;
+  @include setupBackground(
+    '../../images/backgrounds/bg-ldantas.png',
+    50vw, 10vh,
+    initial,
+    70%
+  );
+}
+.main-section--content-descriptionLdantas {
+  margin-left: 20px;
+  padding-left: 20px;
+  border-left: 2px solid black;
+}
+
+@media(max-width: 1024px) {
+  .main {
+    display: none;
+  }
+  .nav {
+    display: none;
+  }
+  .messageResponsive {
+    display: flex;
+  }
+}
